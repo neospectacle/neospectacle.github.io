@@ -5,151 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NeoSpectacle Inc.</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-
 <style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: white;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 80px 20px;
+body{
+    color:#222;
+    background:#f5f5f5;
 }
 
-h1 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 10px;
+/* HERO SECTION */
+
+.hero{
+    position:relative;
+    height:100vh;
+    background: url("hero.jpg") center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.tagline {
-    font-size: 20px;
-    color: #00e0ff;
-    margin-bottom: 40px;
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: rgba(255,255,255,0.65); /* 배경 약하게 */
 }
 
-.section {
-    margin-top: 80px;
+.hero-content{
+    position:relative;
+    max-width:1000px;
+    text-align:center;
+    padding:40px;
 }
 
-.section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    border-left: 4px solid #00e0ff;
-    padding-left: 12px;
+h1{
+    font-size:56px;
+    margin-bottom:20px;
+    color:#0b2545;
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+h2{
+    font-size:28px;
+    margin-bottom:30px;
+    color:#1b3b6f;
 }
 
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 30px;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
+.features{
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:30px;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    background: rgba(0,224,255,0.08);
+.highlight{
+    font-weight:bold;
+    color:#0a5f8f;
 }
 
-.footer {
-    text-align: center;
-    margin-top: 120px;
-    font-size: 14px;
-    opacity: 0.7;
+.contact{
+    font-size:18px;
+    margin-top:20px;
 }
 
-button {
-    background: #00e0ff;
-    border: none;
-    padding: 14px 28px;
-    color: black;
-    font-weight: 600;
-    border-radius: 30px;
-    cursor: pointer;
-    margin-top: 20px;
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 30px;
+    background:#0a5f8f;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#063f5c;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<section class="hero">
+<div class="hero-content">
 
 <h1>NeoSpectacle Inc.</h1>
-<div class="tagline">Beyond Your Vision</div>
 
-<p>
-Ultra-thin Flat Lens for the "prescription-ready" AI-Powered Smart Glasses.
-</p>
+<h2>Prescription-Ready Optical Platform for AI Smart Glasses</h2>
 
-<button onclick="location.href='mailto:hclee@neospectacle.com'">
-Contact Us
-</button>
-
-<div class="section">
-<h2>Core Technology</h2>
-<div class="card-grid">
-
-<div class="card">
-<h3>Ultra-Thin Flat Lens</h3>
-<p>-5 Diopter : Lens thickness 2.0mm Avalable<br>
-High precision mold replication<br>
-Sub-3mm optical integration</p>
+<div class="features">
+Flat lens, <span class="highlight">2mm thickness platform</span><br>
+Full FOV & Eye-relief<br>
+Large eye-box, High transmittance<br>
+High diopter range <span class="highlight">+10 ~ -10</span><br>
+Large diameter over <span class="highlight">70mm</span>
 </div>
 
-<div class="card">
-<h3>Hybrid Vision Correction</h3>
-<p>Integrated optical correction<br>
-XR / AR compatible architecture<br>
-Lightweight wearable design</p>
-</div>
-
-<div class="card">
-<h3>Global Patent Portfolio</h3>
-<p>Filed in Korea, USA, China<br>
-Hybrid Vision Correction Tool<br>
-Optical Display Integration</p>
-</div>
+<a href="mailto:hclee@neospectacle.com" class="btn">Contact: hclee@neospectacle.com</a>
 
 </div>
-</div>
-
-<div class="section">
-<h2>Applications</h2>
-<div class="card-grid">
-
-<div class="card">
-Smart Glasses
-</div>
-
-<div class="card">
-XR / AR Display Modules
-</div>
-
-<div class="card">
-Wearable Optical Devices
-</div>
-
-</div>
-</div>
-
-<div class="footer">
-© 2026 NeoSpectacle Inc. | www.neospectacle.com
-</div>
-
-</div>
+</section>
 
 </body>
 </html>
