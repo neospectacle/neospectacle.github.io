@@ -1,221 +1,708 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeoSpectacle Inc. | Prescription-Ready Optical Platform</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeoSpectacle | Waveguide AI Smart Glasses Optical Platform</title>
+  <meta name="description" content="웨이브가이드 기반 AI 스마트 안경을 위한 시력보정 최적화 초박형 광학 플랫폼. 고도수 과점 → 해자 구축 → 중도수 확장 전략." />
 
-<style>
-body {
-    margin:0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #0b1c2d;
-    color: #ffffff;
-    line-height: 1.6;
-}
+  <style>
+    :root{
+      --bg:#07121f;
+      --bg2:#0a1a2c;
+      --card:#0c2238;
+      --line:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.90);
+      --muted:rgba(255,255,255,.68);
+      --accent:#55c8ff;
+      --accent2:#65ffa6;
+      --warn:#ffb347;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --radius:16px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial, sans-serif;
+      background: radial-gradient(1000px 650px at 70% 10%, rgba(85,200,255,.20), transparent 55%),
+                  radial-gradient(900px 620px at 10% 30%, rgba(101,255,166,.14), transparent 55%),
+                  linear-gradient(180deg, var(--bg), #050b13 70%);
+      color:var(--text);
+      line-height:1.65;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background:rgba(5,11,19,.72);
+      backdrop-filter: blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .row{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.3px;
+    }
+    .brand .dot{
+      width:12px; height:12px; border-radius:999px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 0 22px rgba(85,200,255,.35);
+    }
+    nav{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    nav a{
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid transparent;
+    }
+    nav a:hover{
+      color:var(--text);
+      border-color:rgba(255,255,255,.12);
+      text-decoration:none;
+      background:rgba(255,255,255,.04);
+    }
 
-header {
-    text-align:center;
-    padding:80px 20px;
-    background: linear-gradient(135deg,#0f2e4d,#081420);
-}
+    header.hero{
+      padding:64px 0 28px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(12,34,56,.92), rgba(7,18,31,.92));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:34px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(700px 240px at 30% 0%, rgba(85,200,255,.18), transparent 60%),
+                  radial-gradient(680px 250px at 85% 10%, rgba(101,255,166,.10), transparent 62%);
+      pointer-events:none;
+    }
+    .hero-card > *{position:relative}
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      font-weight:600;
+      letter-spacing:.2px;
+      margin-bottom:14px;
+    }
+    .pill{
+      font-size:12px;
+      padding:6px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.80);
+      white-space:nowrap;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:40px;
+      line-height:1.12;
+      letter-spacing:-.6px;
+    }
+    @media (max-width:560px){ h1{font-size:34px;} }
+    .sub{
+      margin:0 0 18px;
+      color:rgba(255,255,255,.80);
+      font-size:16px;
+      max-width:66ch;
+    }
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:650;
+      cursor:pointer;
+    }
+    .btn.primary{
+      border-color:rgba(85,200,255,.35);
+      background:linear-gradient(135deg, rgba(85,200,255,.18), rgba(101,255,166,.10));
+      box-shadow:0 0 26px rgba(85,200,255,.14);
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      transition:.18s ease;
+      text-decoration:none;
+      background:rgba(255,255,255,.08);
+    }
+    .mini{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+    @media (max-width:720px){ .mini{grid-template-columns:1fr} }
+    .mini .m{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      padding:14px;
+    }
+    .mini .m b{display:block; font-size:14px; color:rgba(255,255,255,.92)}
+    .mini .m span{display:block; margin-top:4px; color:var(--muted); font-size:13px}
 
-header h1 {
-    font-size: 48px;
-    margin-bottom:10px;
-}
+    .side-card{
+      background:rgba(12,34,56,.72);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+    .side-card h3{margin:0 0 10px; font-size:16px}
+    .list{
+      margin:0; padding-left:18px; color:rgba(255,255,255,.82);
+    }
+    .list li{margin:8px 0}
+    .note{
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,179,71,.08);
+      color:rgba(255,255,255,.84);
+      font-size:13px;
+    }
 
-header p {
-    font-size:20px;
-    opacity:0.85;
-}
+    section{
+      padding:42px 0;
+    }
+    .sec-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .sec-title h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.3px;
+    }
+    .sec-title p{
+      margin:0;
+      color:var(--muted);
+      max-width:70ch;
+      font-size:14px;
+    }
 
-.section {
-    padding:70px 20px;
-    max-width:1100px;
-    margin:auto;
-}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, minmax(0,1fr));
+      gap:14px;
+    }
+    .card{
+      background:rgba(12,34,56,.72);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: span 12}
+    @media (max-width: 920px){
+      .col-6,.col-4,.col-8{grid-column: span 12}
+    }
 
-.section h2 {
-    text-align:center;
-    margin-bottom:40px;
-    font-size:32px;
-}
+    .kpi{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .kpi .box{
+      flex:1 1 210px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      padding:14px;
+    }
+    .kpi .box .v{
+      font-size:24px;
+      font-weight:800;
+      letter-spacing:-.4px;
+      margin:0 0 4px;
+    }
+    .kpi .box .t{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      color:rgba(255,255,255,.80);
+    }
 
-.grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
+    .funnel{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+    .step{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      padding:14px 14px;
+      background:rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .step b{font-size:14px}
+    .step span{color:var(--muted); font-size:13px}
+    .bar{
+      height:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      overflow:hidden;
+      margin-top:10px;
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      width:60%;
+      background:linear-gradient(90deg, rgba(85,200,255,.95), rgba(101,255,166,.85));
+    }
 
-.card {
-    background:#11283d;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 0 20px rgba(0,0,0,0.3);
-}
+    .strategy{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      margin-top:6px;
+    }
+    .phase{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      padding:16px;
+    }
+    .phase h4{
+      margin:0 0 8px;
+      font-size:15px;
+      letter-spacing:-.2px;
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    }
+    .phase .badge{
+      font-size:12px;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.82);
+    }
+    .phase ul{margin:0; padding-left:18px; color:rgba(255,255,255,.82)}
+    .phase li{margin:7px 0}
+    .strong{
+      color:rgba(255,255,255,.92);
+      font-weight:800;
+    }
 
-.card h3 {
-    margin-top:0;
-    color:#4cc3ff;
-}
+    footer{
+      padding:34px 0 46px;
+      border-top:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+    }
+    footer .frow{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
 
-.highlight {
-    font-size:40px;
-    font-weight:bold;
-    color:#4cc3ff;
-}
-
-.market {
-    text-align:center;
-    background:#081420;
-}
-
-.market .numbers {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:60px;
-    margin-top:40px;
-}
-
-.market .numbers div {
-    font-size:26px;
-}
-
-footer {
-    text-align:center;
-    padding:40px 20px;
-    background:#050e18;
-    font-size:14px;
-    opacity:0.8;
-}
-
-button {
-    background:#4cc3ff;
-    border:none;
-    padding:15px 30px;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
-    margin-top:20px;
-}
-button:hover {
-    background:#2aa4e6;
-}
-</style>
-
+    .small{
+      font-size:12px;
+      color:rgba(255,255,255,.62);
+    }
+    code.k{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      padding:3px 7px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.78);
+      white-space:nowrap;
+    }
+  </style>
 </head>
+
 <body>
-
-<header>
-    <h1>NeoSpectacle Inc.</h1>
-    <p>Prescription-Ready Optical Platform for AI Smart Glasses</p>
-    <button onclick="location.href='mailto:hclee@neospectacle.com'">
-        Contact for Partnership
-    </button>
-</header>
-
-<section class="section">
-    <h2>Core Technology</h2>
-    <div class="grid">
-
-        <div class="card">
-            <h3>2mm Ultra-Thin Platform</h3>
-            <p>Flat optical architecture replacing bulky multi-layer AR optics.</p>
-            <div class="highlight">~2mm</div>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand">
+          <span class="dot" aria-hidden="true"></span>
+          <span>NeoSpectacle</span>
+          <span class="pill">Waveguide • Prescription • Ultra-thin</span>
         </div>
-
-        <div class="card">
-            <h3>High Diopter Integration</h3>
-            <p>Full prescription compatibility without insert lens modules.</p>
-            <div class="highlight">+10D to -10D</div>
-        </div>
-
-        <div class="card">
-            <h3>Large Optical Aperture</h3>
-            <p>Wide eye-box, full FOV, high transmittance, scalable manufacturing.</p>
-            <div class="highlight">≥70mm</div>
-        </div>
-
+        <nav aria-label="site">
+          <a href="#market">시장검증</a>
+          <a href="#structure">TAM/SAM/Target</a>
+          <a href="#tech">제품 성능 우위</a>
+          <a href="#strategy">전략 로드맵</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
     </div>
-</section>
+  </div>
 
-<section class="section market">
-    <h2>Market Opportunity</h2>
-    <p>Rapid Expansion of AR & AI Smart Glasses Industry</p>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker">
+            <span class="pill">Prescription-Optimized Optical Platform</span>
+            <span class="pill">Waveguide Display Smart Glasses</span>
+          </div>
+          <h1>
+            초박형 광학 플랫폼으로<br/>
+            <span style="color:var(--accent)">고도수</span> 시장을 과점하고<br/>
+            <span style="color:var(--accent2)">해자</span>를 설치한 뒤 중도수로 확장합니다.
+          </h1>
+          <p class="sub">
+            NeoSpectacle은 “저가 전략”이 아니라, <b>초박형(ultra-thin) 제품 성능 우위</b>로
+            웨이브가이드 기반 디스플레이 스마트 안경의 핵심 난제인
+            <b>고도수(-4.0D↑) 시력보정</b>을 먼저 해결하고, 이후 시장을 확장하는 전략을 채택합니다.
+          </p>
 
-    <div class="numbers">
-        <div>
-            <strong>$25B+</strong><br>
-            AR Market by 2025
+          <div class="cta-row">
+            <a class="btn primary" href="mailto:hclee@neospectacle.com">파트너십/투자 문의</a>
+            <a class="btn" href="#strategy">전략 로드맵 보기</a>
+            <span class="small">Email: <a href="mailto:hclee@neospectacle.com">hclee@neospectacle.com</a></span>
+          </div>
+
+          <div class="mini" aria-label="quick facts">
+            <div class="m">
+              <b>시장 기준점</b>
+              <span>2030년 웨이브가이드 디스플레이 스마트 안경 1,000만대(전망)</span>
+            </div>
+            <div class="m">
+              <b>핵심 타겟</b>
+              <span>시력보정 필요 사용자 50% 중 고도수(-4.0D↑) 35~40%</span>
+            </div>
+            <div class="m">
+              <b>포지셔닝</b>
+              <span>고도수 과점 → 해자 구축 → 중도수 확장</span>
+            </div>
+          </div>
         </div>
 
-        <div>
-            <strong>35%+ CAGR</strong><br>
-            Projected Growth
-        </div>
-
-        <div>
-            <strong>500M+</strong><br>
-            Potential Users
-        </div>
+        <aside class="side-card">
+          <h3>핵심 메시지</h3>
+          <ul class="list">
+            <li><b>Waveguide 디스플레이</b>는 얇고 가벼운 폼팩터가 승부처</li>
+            <li><b>고도수(-4.0D↑)</b>는 광학/정렬/두께 문제로 OEM이 회피</li>
+            <li>NeoSpectacle은 <b>초박형 성능 우위</b>로 ‘회피 구간’을 ‘수익 구간’으로 전환</li>
+          </ul>
+          <div class="note">
+            <b>출처</b> (시장 참고): Omdia 2025 Forecast — “AI glasses market poised to hit 10 million units in 2026”
+            <br/>
+            <span class="small">
+              링크: <a href="https://omdia.tech.informa.com/pr/2025/sep/ai-glasses-market-poised-to-hit-10-million-units-in-2026-omdia-forecasts" target="_blank" rel="noopener">omdia.tech.informa.com</a>
+            </span>
+          </div>
+        </aside>
+      </div>
     </div>
-</section>
+  </header>
 
-<section class="section">
-    <h2>Investment Highlights</h2>
-    <div class="grid">
-
-        <div class="card">
-            <h3>Breakthrough Optics</h3>
-            <p>Ultra-flat Fresnel-based lens platform enabling prescription-ready AR systems.</p>
+  <main>
+    <!-- Market Validation -->
+    <section id="market">
+      <div class="wrap">
+        <div class="sec-title">
+          <h2>시장 검증 (Market Validation)</h2>
+          <p>
+            웨이브가이드 기반 디스플레이 스마트 안경은 2030년 기준 <b>연 1,000만대</b> 규모의 견고한 시장 형성이 전망됩니다.
+            (Omdia 전망을 기반으로 한 현실화 시나리오)
+          </p>
         </div>
 
-        <div class="card">
-            <h3>Scalable Manufacturing</h3>
-            <p>Injection molding & precision core fabrication for cost-efficient mass production.</p>
+        <div class="grid">
+          <div class="card col-12">
+            <div class="kpi">
+              <div class="box">
+                <p class="v">10M+</p>
+                <p class="t">AI 스마트 안경 시장 — 2026년 1,000만대 돌파 전망 (Omdia)</p>
+              </div>
+              <div class="box">
+                <p class="v">10M</p>
+                <p class="t">웨이브가이드 디스플레이 모델 — 2030년 기준 연 1,000만대 시장 전망</p>
+              </div>
+              <div class="box">
+                <p class="v">50%</p>
+                <p class="t">시력보정 인서트가 필수인 구매자 비중(가정/추정)</p>
+              </div>
+            </div>
+            <div class="bar" aria-label="growth bar"><i style="width:78%"></i></div>
+            <p class="small" style="margin:10px 0 0;">
+              * 본 웹페이지의 수치는 “시장전망 기반” 가정값(TAM/SAM/Target)이며, 세부 정의(디스플레이 모델 범위/지역/가격대)에 따라 변동될 수 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Structure -->
+    <section id="structure">
+      <div class="wrap">
+        <div class="sec-title">
+          <h2>TAM / SAM / Target Segment</h2>
+          <p>
+            NeoSpectacle은 “전체 시장”이 아니라 <b>고도수(-4.0D↑) 시력보정</b>이라는 기술 난이도 최고 구간을 선점합니다.
+          </p>
         </div>
 
-        <div class="card">
-            <h3>B2B Licensing Model</h3>
-            <p>OEM optical module supply & platform licensing strategy.</p>
+        <div class="grid">
+          <div class="card col-6">
+            <span class="tag">2030 Projection</span>
+            <div class="funnel">
+              <div class="step">
+                <div>
+                  <b>TAM</b><br/>
+                  <span>웨이브가이드 디스플레이 스마트 안경 전체 시장</span>
+                </div>
+                <div class="strong">10,000,000 units</div>
+              </div>
+              <div class="step">
+                <div>
+                  <b>SAM (50%)</b><br/>
+                  <span>시력보정 인서트가 필수인 사용자</span>
+                </div>
+                <div class="strong">5,000,000 users</div>
+              </div>
+              <div class="step">
+                <div>
+                  <b>Target (-4.0D↑, 40%)</b><br/>
+                  <span>시력보정 사용자 중 고도수(중고도 근시) 구간</span>
+                </div>
+                <div class="strong">2,000,000 users</div>
+              </div>
+            </div>
+            <p class="small" style="margin:12px 0 0;">
+              정의: Target Segment는 “-4.0D 이상(중고도 근시)”을 핵심 실증 타겟으로 설정.
+              (시력보정 대상자의 35~40% 수준 가정)
+            </p>
+          </div>
+
+          <div class="card col-6">
+            <span class="tag">Why High-Diopter First</span>
+            <h3 style="margin:10px 0 8px; font-size:16px;">고도수 세그먼트가 ‘전략적 과점’이 되는 이유</h3>
+            <ul class="list">
+              <li>Waveguide 폼팩터에서 <b>두께·무게 증가</b>는 제품 경쟁력 저하로 직결</li>
+              <li>고도수는 삽입형 인서트 방식에서 <b>정렬/왜곡/눈-디스플레이 거리</b> 문제가 급증</li>
+              <li>OEM은 리스크를 이유로 해당 구간을 회피 → <b>공급 공백</b> 발생</li>
+              <li>초박형 성능 우위로 이 구간을 먼저 해결하면 <b>기술적 해자</b>가 자연스럽게 형성</li>
+            </ul>
+            <div class="note" style="background:rgba(85,200,255,.08); border-color:rgba(85,200,255,.18);">
+              포지셔닝: <b>“고도수는 니치가 아니라, 가장 어려운 문제를 먼저 해결해 시장을 확장하는 출발점”</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Advantage (No Pricing Strategy) -->
+    <section id="tech">
+      <div class="wrap">
+        <div class="sec-title">
+          <h2>초박형 제품 성능 우위 (Competitive Advantage)</h2>
+          <p>
+            가격이 아니라 <b>성능 우위(두께/정렬/광학 성능/시력보정 범위)</b>로 승부합니다.
+          </p>
         </div>
 
-        <div class="card">
-            <h3>IP Portfolio</h3>
-            <p>Patented ultra-thin optical architecture for AR wearable systems.</p>
+        <div class="grid">
+          <div class="card col-4">
+            <h3 style="margin:0 0 8px; font-size:16px;">Ultra-thin Architecture</h3>
+            <p style="margin:0; color:rgba(255,255,255,.80);">
+              웨이브가이드 디스플레이 폼팩터에서 핵심 제약인
+              <b>두께/무게</b>를 최소화하는 초박형 광학 플랫폼 설계.
+            </p>
+          </div>
+          <div class="card col-4">
+            <h3 style="margin:0 0 8px; font-size:16px;">Waveguide Compatibility</h3>
+            <p style="margin:0; color:rgba(255,255,255,.80);">
+              디스플레이 광학계와의 정렬 및 시야 조건을 고려한
+              <b>AR waveguide 친화형</b> 시력보정 구조.
+            </p>
+          </div>
+          <div class="card col-4">
+            <h3 style="margin:0 0 8px; font-size:16px;">High-Diopter Support</h3>
+            <p style="margin:0; color:rgba(255,255,255,.80);">
+              고도수(-4.0D↑)를 우선 공략하여 실증과 레퍼런스를 확보하고,
+              동일 플랫폼으로 중도수 구간까지 확장.
+            </p>
+          </div>
+
+          <div class="card col-12">
+            <div class="kpi">
+              <div class="box">
+                <p class="v">1) 성능으로 과점</p>
+                <p class="t">초박형 성능 우위로 ‘회피 구간(고도수)’에서 확실한 레퍼런스 확보</p>
+              </div>
+              <div class="box">
+                <p class="v">2) 해자 구축</p>
+                <p class="t">특허/IP + 공정/품질 노하우 + 파트너 락인으로 진입장벽 강화</p>
+              </div>
+              <div class="box">
+                <p class="v">3) 확장</p>
+                <p class="t">플랫폼 스케일업으로 중도수/일반 시력보정으로 시장 확대</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategy Roadmap -->
+    <section id="strategy">
+      <div class="wrap">
+        <div class="sec-title">
+          <h2>전략 로드맵</h2>
+          <p>
+            “저가”가 아니라 “초박형 성능 우위”로 시작해, 고도수 과점 후 해자를 구축하고 중도수로 확대합니다.
+          </p>
         </div>
 
+        <div class="grid">
+          <div class="card col-12">
+            <div class="strategy">
+              <div class="phase">
+                <h4>
+                  <span class="badge">Phase 1</span>
+                  고도수(-4.0D↑) 과점 전략
+                </h4>
+                <ul>
+                  <li><span class="strong">가장 어려운 구간</span>에서 성능으로 승부 → OEM 회피 구간 선점</li>
+                  <li>핵심 고객/제품군에서 <span class="strong">레퍼런스·실증 매출</span> 확보</li>
+                  <li>고도수에 최적화된 설계/정렬/품질 기준을 ‘표준’으로 내재화</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>
+                  <span class="badge">Phase 2</span>
+                  해자(Moat) 설치
+                </h4>
+                <ul>
+                  <li><span class="strong">IP 포트폴리오</span> + 설계 규칙 + 공정 레시피 + 검사/품질 기준</li>
+                  <li>OEM 공동개발/양산 연동으로 <span class="strong">락인(Lock-in)</span> 구조 강화</li>
+                  <li>고도수 성능 데이터 축적 → 경쟁사 진입 비용/기간 급증</li>
+                </ul>
+              </div>
+
+              <div class="phase">
+                <h4>
+                  <span class="badge">Phase 3</span>
+                  중도수 확대(Scale-out)
+                </h4>
+                <ul>
+                  <li>Phase 1~2에서 확보한 플랫폼 기반으로 <span class="strong">중도수/일반 시력보정</span>까지 확장</li>
+                  <li>제품 라인업 확장(옵션/사양)으로 <span class="strong">SAM을 넓혀</span> 매출 레벨업</li>
+                  <li>글로벌 OEM 공급망(GVC)에서 표준 모듈화/확장성 확보</li>
+                </ul>
+              </div>
+            </div>
+
+            <p class="small" style="margin:14px 0 0;">
+              * 본 전략은 “가격 경쟁”이 아니라, 초박형 성능과 난제 해결을 통해
+              고부가가치 세그먼트를 선점하고, 이후 시장을 확장하는 방식입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="sec-title">
+          <h2>파트너십 / 투자 문의</h2>
+          <p>
+            웨이브가이드 디스플레이 스마트 안경 OEM, 모듈 인티그레이터, 전략적 투자 파트너와의 협업을 환영합니다.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card col-8">
+            <h3 style="margin:0 0 10px; font-size:16px;">Contact</h3>
+            <p style="margin:0 0 12px; color:rgba(255,255,255,.80);">
+              Email: <a href="mailto:hclee@neospectacle.com">hclee@neospectacle.com</a><br/>
+              GitHub: <a href="https://github.com/neospectacle" target="_blank" rel="noopener">github.com/neospectacle</a>
+            </p>
+            <p class="small" style="margin:0;">
+              필요하시면 본 페이지를 <code class="k">EN/KR</code> 이중 언어 토글, 데이터(표/그래프) 섹션,
+              그리고 IR용 PDF 다운로드 버튼까지 확장해 드릴 수 있습니다.
+            </p>
+          </div>
+
+          <div class="card col-4">
+            <h3 style="margin:0 0 10px; font-size:16px;">Reference</h3>
+            <p style="margin:0; color:rgba(255,255,255,.80);">
+              Omdia (Informa Tech) Press Release (2025)<br/>
+              <a href="https://omdia.tech.informa.com/pr/2025/sep/ai-glasses-market-poised-to-hit-10-million-units-in-2026-omdia-forecasts"
+                 target="_blank" rel="noopener">
+                AI glasses market poised to hit 10 million units in 2026
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="frow">
+        <div>© <span id="y"></span> NeoSpectacle Inc. All rights reserved.</div>
+        <div class="small">Waveguide • Prescription • Ultra-thin Optical Platform</div>
+      </div>
     </div>
-</section>
+  </footer>
 
-<section class="section">
-    <h2>Applications</h2>
-    <div class="grid">
-
-        <div class="card">
-            <h3>Enterprise AR</h3>
-            <p>Industrial smart glasses with integrated prescription.</p>
-        </div>
-
-        <div class="card">
-            <h3>Sports & Outdoor</h3>
-            <p>Lightweight smart sports goggles with vision correction.</p>
-        </div>
-
-        <div class="card">
-            <h3>Defense & Tactical</h3>
-            <p>Compact optical modules for field-deployable AR systems.</p>
-        </div>
-
-    </div>
-</section>
-
-<footer>
-    © 2026 NeoSpectacle Inc.  
-    Contact: hclee@neospectacle.com
-</footer>
-
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
