@@ -1,64 +1,221 @@
-.hero{
-    position:relative;
-    height:100vh;
-    background: url("hero.jpg") center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeoSpectacle Inc. | Prescription-Ready Optical Platform</title>
+
+<style>
+body {
+    margin:0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0b1c2d;
+    color: #ffffff;
+    line-height: 1.6;
 }
 
-/* 오버레이를 어둡게 변경 */
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: rgba(0,0,0,0.35);   /* 어둡게 변경 */
-}
-
-/* 텍스트 영역 */
-.hero-content{
-    position:relative;
-    max-width:1000px;
+header {
     text-align:center;
-    padding:40px;
-    color:white;                    /* 글자 흰색 */
+    padding:80px 20px;
+    background: linear-gradient(135deg,#0f2e4d,#081420);
 }
 
-h1{
-    font-size:64px;
-    margin-bottom:20px;
-    font-weight:700;
+header h1 {
+    font-size: 48px;
+    margin-bottom:10px;
 }
 
-h2{
-    font-size:28px;
-    margin-bottom:30px;
-    font-weight:400;
-}
-
-.features{
+header p {
     font-size:20px;
-    line-height:1.8;
-    margin-bottom:30px;
+    opacity:0.85;
 }
 
-.highlight{
+.section {
+    padding:70px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.section h2 {
+    text-align:center;
+    margin-bottom:40px;
+    font-size:32px;
+}
+
+.grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card {
+    background:#11283d;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.card h3 {
+    margin-top:0;
+    color:#4cc3ff;
+}
+
+.highlight {
+    font-size:40px;
     font-weight:bold;
-    color:#00d4ff;
+    color:#4cc3ff;
 }
 
-.btn{
-    display:inline-block;
-    margin-top:30px;
-    padding:14px 30px;
-    background:#00d4ff;
-    color:black;
-    text-decoration:none;
-    border-radius:30px;
-    font-weight:bold;
-    transition:0.3s;
+.market {
+    text-align:center;
+    background:#081420;
 }
 
-.btn:hover{
-    background:white;
+.market .numbers {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:60px;
+    margin-top:40px;
 }
+
+.market .numbers div {
+    font-size:26px;
+}
+
+footer {
+    text-align:center;
+    padding:40px 20px;
+    background:#050e18;
+    font-size:14px;
+    opacity:0.8;
+}
+
+button {
+    background:#4cc3ff;
+    border:none;
+    padding:15px 30px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:20px;
+}
+button:hover {
+    background:#2aa4e6;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>NeoSpectacle Inc.</h1>
+    <p>Prescription-Ready Optical Platform for AI Smart Glasses</p>
+    <button onclick="location.href='mailto:hclee@neospectacle.com'">
+        Contact for Partnership
+    </button>
+</header>
+
+<section class="section">
+    <h2>Core Technology</h2>
+    <div class="grid">
+
+        <div class="card">
+            <h3>2mm Ultra-Thin Platform</h3>
+            <p>Flat optical architecture replacing bulky multi-layer AR optics.</p>
+            <div class="highlight">~2mm</div>
+        </div>
+
+        <div class="card">
+            <h3>High Diopter Integration</h3>
+            <p>Full prescription compatibility without insert lens modules.</p>
+            <div class="highlight">+10D to -10D</div>
+        </div>
+
+        <div class="card">
+            <h3>Large Optical Aperture</h3>
+            <p>Wide eye-box, full FOV, high transmittance, scalable manufacturing.</p>
+            <div class="highlight">≥70mm</div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section market">
+    <h2>Market Opportunity</h2>
+    <p>Rapid Expansion of AR & AI Smart Glasses Industry</p>
+
+    <div class="numbers">
+        <div>
+            <strong>$25B+</strong><br>
+            AR Market by 2025
+        </div>
+
+        <div>
+            <strong>35%+ CAGR</strong><br>
+            Projected Growth
+        </div>
+
+        <div>
+            <strong>500M+</strong><br>
+            Potential Users
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Investment Highlights</h2>
+    <div class="grid">
+
+        <div class="card">
+            <h3>Breakthrough Optics</h3>
+            <p>Ultra-flat Fresnel-based lens platform enabling prescription-ready AR systems.</p>
+        </div>
+
+        <div class="card">
+            <h3>Scalable Manufacturing</h3>
+            <p>Injection molding & precision core fabrication for cost-efficient mass production.</p>
+        </div>
+
+        <div class="card">
+            <h3>B2B Licensing Model</h3>
+            <p>OEM optical module supply & platform licensing strategy.</p>
+        </div>
+
+        <div class="card">
+            <h3>IP Portfolio</h3>
+            <p>Patented ultra-thin optical architecture for AR wearable systems.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>Applications</h2>
+    <div class="grid">
+
+        <div class="card">
+            <h3>Enterprise AR</h3>
+            <p>Industrial smart glasses with integrated prescription.</p>
+        </div>
+
+        <div class="card">
+            <h3>Sports & Outdoor</h3>
+            <p>Lightweight smart sports goggles with vision correction.</p>
+        </div>
+
+        <div class="card">
+            <h3>Defense & Tactical</h3>
+            <p>Compact optical modules for field-deployable AR systems.</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 NeoSpectacle Inc.  
+    Contact: hclee@neospectacle.com
+</footer>
+
+</body>
+</html>
