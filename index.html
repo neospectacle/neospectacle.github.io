@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoSpectacle | Optical Platform for AI Smart Glasses</title>
+  <meta name="description" content="NeoSpectacle develops an ultra-thin prescription-ready optical platform for AI smart glasses and waveguide-based wearable displays." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.neospectacle.com/" />
+
+  <meta property="og:title" content="NeoSpectacle | Optical Platform for AI Smart Glasses" />
+  <meta property="og:description" content="Ultra-thin prescription-ready optical platform for next-generation smart glasses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.neospectacle.com/" />
+  <meta property="og:image" content="https://www.neospectacle.com/images/hero.jpg" />
+
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --text: #0f1728;
+      --muted: #5f6b7a;
+      --line: #e7ebf1;
+      --card: rgba(255,255,255,0.78);
+      --accent: #2563eb;
+      --accent-dark: #1749b3;
+      --max: 1160px;
+      --radius: 20px;
+      --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(246, 247, 251, 0.72);
+      border-bottom: 1px solid rgba(231, 235, 241, 0.7);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .lang-toggle {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+    }
+
+    .lang-toggle:hover {
+      background: #fdfdfd;
+    }
+
+    .hero {
+      padding: 34px 0 36px;
+    }
+
+    .hero-shell {
+      position: relative;
+      min-height: 650px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(to right, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.72) 30%, rgba(255,255,255,0.18) 58%, rgba(255,255,255,0.08) 100%),
+        url("images/hero.jpg") center center / cover no-repeat;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+      padding: 72px 56px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 40, 0.08);
+      background: rgba(255,255,255,0.74);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 5.2vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      max-width: 10.5ch;
+    }
+
+    .hero p {
+      margin: 22px 0 0;
+      max-width: 580px;
+      font-size: 1.08rem;
+      color: #334155;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.96rem;
+      transition: 0.18s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+    }
+
+    .btn.primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.82);
+      color: var(--text);
+      border-color: rgba(15,23,40,0.08);
+    }
+
+    .btn.secondary:hover {
+      background: white;
+    }
+
+    .hero-note {
+      margin-top: 22px;
+      font-size: 0.92rem;
+      color: #475569;
+    }
+
+    section {
+      padding: 44px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid white;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .mini-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .contact-box {
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+      border: 1px solid white;
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 34px 24px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-email {
+      margin-top: 18px;
+      display: inline-block;
+      font-size: 1.04rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    footer {
+      padding: 30px 0 40px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    [data-lang] {
+      display: none;
+    }
+
+    html[lang="ko"] [data-lang="ko"] {
+      display: inline;
+    }
+
+    html[lang="en"] [data-lang="en"] {
+      display: inline;
+    }
+
+    html[lang="ko"] .block-ko,
+    html[lang="en"] .block-en {
+      display: block;
+    }
+
+    html[lang="ko"] .block-en,
+    html[lang="en"] .block-ko {
+      display: none;
+    }
+
+    @media (max-width: 960px) {
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-shell {
+        min-height: 620px;
+        background:
+          linear-gradient(to bottom, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.78) 38%, rgba(255,255,255,0.16) 100%),
+          url("images/hero.jpg") center center / cover no-repeat;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        padding: 52px 28px;
+      }
+
+      .hero h1 {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .hero-shell {
+        min-height: 560px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 10vw, 3.2rem);
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-content {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">NeoSpectacle</div>
+
+      <nav class="nav">
+        <a href="#technology">
+          <span data-lang="ko">기술</span>
+          <span data-lang="en">Technology</span>
+        </a>
+        <a href="#applications">
+          <span data-lang="ko">응용 분야</span>
+          <span data-lang="en">Applications</span>
+        </a>
+        <a href="#contact">
+          <span data-lang="ko">문의</span>
+          <span data-lang="en">Contact</span>
+        </a>
+        <button id="langToggle" class="lang-toggle" type="button">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-shell">
+          <div class="hero-content">
+            <div class="eyebrow">
+              <span data-lang="ko">Prescription-Ready Optical Platform</span>
+              <span data-lang="en">Prescription-Ready Optical Platform</span>
+            </div>
+
+            <h1>
+              <span class="block-ko">AI 스마트 안경을 위한 초박형 광학 플랫폼</span>
+              <span class="block-en">Optical Platform for AI Smart Glasses</span>
+            </h1>
+
+            <p>
+              <span class="block-ko">
+                NeoSpectacle은 웨이브가이드 기반 스마트 안경을 위한 시력보정 최적화 광학 플랫폼을 개발합니다.
+                초박형 구조, 넓은 적용성, 그리고 차세대 스마트 아이웨어에 적합한 설계를 지향합니다.
+              </span>
+              <span class="block-en">
+                NeoSpectacle develops a prescription-optimized optical platform for waveguide-based smart glasses,
+                focused on ultra-thin architecture, scalable integration, and next-generation wearable optics.
+              </span>
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#contact">
+                <span data-lang="ko">문의하기</span>
+                <span data-lang="en">Contact Us</span>
+              </a>
+              <a class="btn secondary" href="#technology">
+                <span data-lang="ko">기술 보기</span>
+                <span data-lang="en">Explore Technology</span>
+              </a>
+            </div>
+
+            <div class="hero-note">
+              <span data-lang="ko">Waveguide-compatible • Ultra-thin • Prescription-ready</span>
+              <span data-lang="en">Waveguide-compatible • Ultra-thin • Prescription-ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="technology">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>
+            <span data-lang="ko">핵심 기술</span>
+            <span data-lang="en">Core Technology</span>
+          </h2>
+          <p>
+            <span class="block-ko">
+              두께와 무게를 줄이면서도 스마트 안경에 필요한 시력보정 대응성을 확보하는 것이 핵심입니다.
+            </span>
+            <span class="block-en">
+              Our focus is enabling prescription support in smart glasses without sacrificing thinness, comfort, or integration.
+            </span>
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="mini-tag">01</div>
+            <h3>
+              <span data-lang="ko">초박형 광학 구조</span>
+              <span data-lang="en">Ultra-Thin Optical Architecture</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                경량 스마트글라스에 적합한 얇고 단순한 광학 플랫폼을 지향합니다.
+              </span>
+              <span class="block-en">
+                A compact optical architecture designed for lightweight smart-glasses form factors.
+              </span>
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="mini-tag">02</div>
+            <h3>
+              <span data-lang="ko">웨이브가이드 호환</span>
+              <span data-lang="en">Waveguide Compatibility</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                디스플레이 일체형 스마트 안경에서 중요한 정렬성과 패키징 조건을 고려합니다.
+              </span>
+              <span class="block-en">
+                Optimized for display-integrated smart glasses where alignment and packaging are critical.
+              </span>
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="mini-tag">03</div>
+            <h3>
+              <span data-lang="ko">시력보정 대응</span>
+              <span data-lang="en">Prescription Support</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                시력보정이 필요한 사용자를 위한 실용적이고 확장 가능한 광학 솔루션을 목표로 합니다.
+              </span>
+              <span class="block-en">
+                Built for practical and scalable prescription-ready optics in next-generation eyewear.
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="applications">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>
+            <span data-lang="ko">응용 분야</span>
+            <span data-lang="en">Applications</span>
+          </h2>
+          <p>
+            <span class="block-ko">
+              소비자용 스마트 안경부터 산업용 웨어러블까지 다양한 환경에서 적용될 수 있습니다.
+            </span>
+            <span class="block-en">
+              Our platform can support multiple wearable categories as the smart-glasses market expands.
+            </span>
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>
+              <span data-lang="ko">AI 스마트 안경</span>
+              <span data-lang="en">AI Smart Glasses</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                차세대 소비자용 및 엔터프라이즈 스마트 안경을 위한 prescription-ready optical platform.
+              </span>
+              <span class="block-en">
+                Prescription-ready optical platform for next-generation consumer and enterprise smart glasses.
+              </span>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <span data-lang="ko">산업용·현장용 웨어러블</span>
+              <span data-lang="en">Industrial & Field Wearables</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                작업 현장, 물류, 유지보수, 원격 지원 등 실사용 환경에 적합한 광학 솔루션.
+              </span>
+              <span class="block-en">
+                Optical solutions for field work, logistics, maintenance, and remote-assistance wearables.
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <h2>
+            <span data-lang="ko">파트너십 및 문의</span>
+            <span data-lang="en">Partnership & Contact</span>
+          </h2>
+          <p>
+            <span data-lang="ko">사업 협력, 기술 협력, 투자 문의</span>
+            <span data-lang="en">Business, technology, and investment inquiries</span>
+          </p>
+          <a class="contact-email" href="mailto:hclee@neospectacle.com">hclee@neospectacle.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span data-lang="ko">© 2026 NeoSpectacle. All rights reserved.</span>
+      <span data-lang="en">© 2026 NeoSpectacle. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const toggleBtn = document.getElementById("langToggle");
+      const savedLang = localStorage.getItem("neospectacle-lang");
+
+      function setLanguage(lang) {
+        html.setAttribute("lang", lang);
+        toggleBtn.textContent = lang === "ko" ? "EN" : "KR";
+        localStorage.setItem("neospectacle-lang", lang);
+      }
+
+      setLanguage(savedLang === "en" ? "en" : "ko");
+
+      toggleBtn.addEventListener("click", function () {
+        const current = html.getAttribute("lang");
+        setLanguage(current === "ko" ? "en" : "ko");
+      });
+    })();
+  </script>
+</body>
+</html>
