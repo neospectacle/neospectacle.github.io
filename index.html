@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoSpectacle | Ultra-Thin Optics for AI Smart Glasses</title>
+  <meta name="description" content="NeoSpectacle develops an ultra-thin optical platform for AI smart glasses, optimized for waveguide systems and high-diopter prescription support." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.neospectacle.com/" />
+
+  <meta property="og:title" content="NeoSpectacle | Ultra-Thin Optics for AI Smart Glasses" />
+  <meta property="og:description" content="Prescription-optimized ultra-thin optical platform for waveguide-based AI smart glasses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.neospectacle.com/" />
+
+  <style>
+    :root {
+      --bg: #07111d;
+      --bg-soft: #0d1c2e;
+      --card: rgba(15, 34, 56, 0.72);
+      --line: rgba(255,255,255,0.10);
+      --text: #eef4fb;
+      --muted: rgba(238,244,251,0.72);
+      --accent: #63cfff;
+      --accent-soft: rgba(99,207,255,0.16);
+      --max: 1040px;
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(99,207,255,0.14), transparent 28%),
+        linear-gradient(180deg, var(--bg), #050b12 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(7,17,29,0.86);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.2px;
+      color: var(--text);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a,
+    .lang-toggle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .lang-toggle {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .lang-toggle:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero {
+      padding: 88px 0 72px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 20px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(99,207,255,0.22), rgba(99,207,255,0.08));
+      border-color: rgba(99,207,255,0.35);
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      transition: 0.18s ease;
+    }
+
+    section {
+      padding: 56px 0;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      margin: 0 0 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      margin: 0 0 28px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .stat {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 34px 20px;
+      background: rgba(15,34,56,0.6);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    [data-lang] {
+      display: none;
+    }
+
+    html[lang="ko"] [data-lang="ko"] {
+      display: inline;
+    }
+
+    html[lang="en"] [data-lang="en"] {
+      display: inline;
+    }
+
+    html[lang="ko"] .block-ko,
+    html[lang="en"] .block-en {
+      display: block;
+    }
+
+    html[lang="ko"] .block-en,
+    html[lang="en"] .block-ko {
+      display: none;
+    }
+
+    @media (max-width: 820px) {
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .hero {
+        padding: 72px 0 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">NeoSpectacle</div>
+
+      <nav class="nav">
+        <a href="#technology">
+          <span data-lang="ko">기술</span>
+          <span data-lang="en">Technology</span>
+        </a>
+        <a href="#market">
+          <span data-lang="ko">시장</span>
+          <span data-lang="en">Market</span>
+        </a>
+        <a href="#applications">
+          <span data-lang="ko">응용 분야</span>
+          <span data-lang="en">Applications</span>
+        </a>
+        <a href="#contact">
+          <span data-lang="ko">문의</span>
+          <span data-lang="en">Contact</span>
+        </a>
+        <button id="langToggle" class="lang-toggle" type="button">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">
+          <span data-lang="ko">초박형 광학 플랫폼</span>
+          <span data-lang="en">Ultra-Thin Optical Platform</span>
+        </div>
+
+        <h1>
+          <span class="block-ko">AI 스마트 안경을 위한<br>초박형 광학 플랫폼</span>
+          <span class="block-en">Ultra-Thin Optical Platform<br>for AI Smart Glasses</span>
+        </h1>
+
+        <p>
+          <span class="block-ko">
+            NeoSpectacle은 웨이브가이드 기반 스마트 안경을 위한 시력보정 최적화 광학 플랫폼을 개발합니다.
+            초박형 폼팩터, 고도수 지원, 확장 가능한 통합 구조에 집중합니다.
+          </span>
+          <span class="block-en">
+            NeoSpectacle develops prescription-optimized optics for waveguide-based smart glasses,
+            with a focus on ultra-thin form factor, high-diopter support, and scalable integration.
+          </span>
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">
+            <span data-lang="ko">문의하기</span>
+            <span data-lang="en">Contact Us</span>
+          </a>
+          <a class="btn" href="#technology">
+            <span data-lang="ko">더 알아보기</span>
+            <span data-lang="en">Learn More</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="technology">
+      <div class="wrap">
+        <h2 class="section-title">
+          <span data-lang="ko">기술</span>
+          <span data-lang="en">Technology</span>
+        </h2>
+
+        <p class="section-desc">
+          <span class="block-ko">
+            차세대 스마트 안경의 핵심 광학 문제는 시력보정을 지원하면서도 두께, 정렬, 착용성을 유지하는 것입니다.
+            NeoSpectacle은 이 문제를 초박형 광학 구조로 해결하고자 합니다.
+          </span>
+          <span class="block-en">
+            We focus on the core optical problem in next-generation smart glasses:
+            enabling prescription support without sacrificing thickness, alignment, or wearable comfort.
+          </span>
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>
+              <span data-lang="ko">초박형 광학 플랫폼</span>
+              <span data-lang="en">Ultra-Thin Optical Platform</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                경량 스마트 안경 폼팩터에 적합한 콤팩트 광학 구조를 지향합니다.
+              </span>
+              <span class="block-en">
+                A compact optical architecture designed for lightweight smart-glasses form factors.
+              </span>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <span data-lang="ko">웨이브가이드 호환 설계</span>
+              <span data-lang="en">Waveguide-Compatible Design</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                디스플레이 일체형 스마트 안경에서 중요한 정렬과 두께 조건을 고려한 구조입니다.
+              </span>
+              <span class="block-en">
+                Optimized for display-integrated smart glasses where alignment and thickness are critical.
+              </span>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <span data-lang="ko">고도수 시력보정 지원</span>
+              <span data-lang="en">High-Diopter Support</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                현재 시스템에서 충분히 대응되지 않는 고도수 구간을 핵심 대상으로 합니다.
+              </span>
+              <span class="block-en">
+                Built to address difficult prescription ranges that are often underserved in current systems.
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="wrap">
+        <h2 class="section-title">
+          <span data-lang="ko">시장</span>
+          <span data-lang="en">Market</span>
+        </h2>
+
+        <p class="section-desc">
+          <span class="block-ko">
+            NeoSpectacle은 스마트 안경 시장 전체보다, 시력보정이 필요한 사용자 중에서도
+            웨이브가이드 디스플레이 제품의 고도수 세그먼트에 집중합니다.
+          </span>
+          <span class="block-en">
+            NeoSpectacle targets a high-value segment within the emerging smart-glasses market:
+            users who require vision correction, especially high-myopia users in waveguide display products.
+          </span>
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="stat">10M</div>
+            <p>
+              <span class="block-ko">2030년 기준 웨이브가이드 스마트 안경 시장 규모 전망</span>
+              <span class="block-en">Projected waveguide smart-glasses market scale by 2030.</span>
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="stat">50%</div>
+            <p>
+              <span class="block-ko">시력보정이 필요한 사용자 비중 추정</span>
+              <span class="block-en">Estimated share of users who require prescription vision correction.</span>
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="stat">35–40%</div>
+            <p>
+              <span class="block-ko">시력보정 사용자 중 고도근시 세그먼트 추정</span>
+              <span class="block-en">Estimated high-myopia segment within vision-correction users.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="applications">
+      <div class="wrap">
+        <h2 class="section-title">
+          <span data-lang="ko">응용 분야</span>
+          <span data-lang="en">Applications</span>
+        </h2>
+
+        <p class="section-desc">
+          <span class="block-ko">
+            당사의 광학 플랫폼은 시장 확장에 따라 다양한 스마트 아이웨어 제품군에 적용될 수 있습니다.
+          </span>
+          <span class="block-en">
+            Our optical platform can support multiple smart-eyewear categories as the market expands.
+          </span>
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>
+              <span data-lang="ko">AI 스마트 안경</span>
+              <span data-lang="en">AI Smart Glasses</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                차세대 소비자용 및 엔터프라이즈 스마트 안경을 위한 시력보정 대응 광학 구조
+              </span>
+              <span class="block-en">
+                Prescription-ready optics for next-generation consumer and enterprise smart glasses.
+              </span>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <span data-lang="ko">산업용 및 AR 웨어러블</span>
+              <span data-lang="en">Industrial and AR Wearables</span>
+            </h3>
+            <p>
+              <span class="block-ko">
+                현장, 공장, 엔터프라이즈 환경의 웨이브가이드 기반 디바이스를 위한 광학 솔루션
+              </span>
+              <span class="block-en">
+                Optical solutions for waveguide-enabled devices used in field, factory, and enterprise settings.
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <h2 class="section-title" style="margin-bottom: 8px;">
+            <span data-lang="ko">문의</span>
+            <span data-lang="en">Contact</span>
+          </h2>
+
+          <p>
+            <span data-lang="ko">파트너십 및 투자 문의</span>
+            <span data-lang="en">Partnership and investment inquiries</span>
+          </p>
+
+          <p style="margin-top: 16px;">
+            <a href="mailto:hclee@neospectacle.com">hclee@neospectacle.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span data-lang="ko">© 2026 NeoSpectacle. All rights reserved.</span>
+      <span data-lang="en">© 2026 NeoSpectacle. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const toggleBtn = document.getElementById("langToggle");
+      const savedLang = localStorage.getItem("neospectacle-lang");
+
+      function setLanguage(lang) {
+        html.setAttribute("lang", lang);
+        toggleBtn.textContent = lang === "ko" ? "EN" : "KR";
+        localStorage.setItem("neospectacle-lang", lang);
+      }
+
+      setLanguage(savedLang === "en" ? "en" : "ko");
+
+      toggleBtn.addEventListener("click", function () {
+        const current = html.getAttribute("lang");
+        setLanguage(current === "ko" ? "en" : "ko");
+      });
+    })();
+  </script>
+</body>
+</html>
